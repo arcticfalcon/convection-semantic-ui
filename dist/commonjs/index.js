@@ -22,6 +22,15 @@ Object.defineProperty(exports, 'DataGrid', {
   }
 });
 
+var _DataBrowser = require('./DataBrowser');
+
+Object.defineProperty(exports, 'DataBrowser', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_DataBrowser).default;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 ;

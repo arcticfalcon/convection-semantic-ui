@@ -16,7 +16,8 @@ const DataGrid = ({ headers, data, renderBodyRow, ...otherProps }) => (
 export default DataGrid
 
 export const buildPagination = (currentPage, pageCount, setPageHandle) => {
-  const handleItemClick = (e, { name }) => setPageHandle(name)
+  const handleItemClick = (e, {page}) => setPageHandle(page)
+
   const segments = segmentize({
     currentPage,
     pageCount,
@@ -28,7 +29,7 @@ export const buildPagination = (currentPage, pageCount, setPageHandle) => {
   return (
     <Menu pagination>
       {segments.beginPages.map(page => (
-        <Menu.Item key={page} name={page} active={false} onClick={handleItemClick} />
+        <Menu.Item key={page} page={page} active={false} onClick={handleItemClick} />
       ))}
 
       {segments.previousPages.length &&
@@ -37,15 +38,15 @@ export const buildPagination = (currentPage, pageCount, setPageHandle) => {
       ) : null}
 
       {segments.previousPages.map(page => (
-        <Menu.Item key={page} name={page} active={false} onClick={handleItemClick} />
+        <Menu.Item key={page} page={page} active={false} onClick={handleItemClick} />
       ))}
 
       {segments.centerPage.map(page => (
-        <Menu.Item key={page} name={page} active onClick={handleItemClick} />
+        <Menu.Item key={page} page={page} active onClick={handleItemClick} />
       ))}
 
       {segments.nextPages.map(page => (
-        <Menu.Item key={page} name={page} active={false} onClick={handleItemClick} />
+        <Menu.Item key={page} page={page} active={false} onClick={handleItemClick} />
       ))}
 
       {segments.nextPages.length &&
@@ -54,7 +55,7 @@ export const buildPagination = (currentPage, pageCount, setPageHandle) => {
       ) : null}
 
       {segments.endPages.map(page => (
-        <Menu.Item key={page} name={page} active={false} onClick={handleItemClick} />
+        <Menu.Item key={page} page={page} active={false} onClick={handleItemClick} />
       ))}
     </Menu>
   )

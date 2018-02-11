@@ -42,9 +42,10 @@ var _default = DataGrid;
 exports.default = _default;
 var buildPagination = exports.buildPagination = function buildPagination(currentPage, pageCount, setPageHandle) {
   var handleItemClick = function handleItemClick(e, _ref2) {
-    var name = _ref2.name;
-    return setPageHandle(name);
+    var page = _ref2.page;
+    return setPageHandle(page);
   };
+
   var segments = (0, _segmentize2.default)({
     currentPage: currentPage,
     pageCount: pageCount,
@@ -57,7 +58,7 @@ var buildPagination = exports.buildPagination = function buildPagination(current
     _semanticUiReact.Menu,
     { pagination: true },
     segments.beginPages.map(function (page) {
-      return _react2.default.createElement(_semanticUiReact.Menu.Item, { key: page, name: page, active: false, onClick: handleItemClick });
+      return _react2.default.createElement(_semanticUiReact.Menu.Item, { key: page, page: page, active: false, onClick: handleItemClick });
     }),
     segments.previousPages.length && Math.min.apply(Math, _toConsumableArray(segments.previousPages)) - Math.max.apply(Math, _toConsumableArray(segments.beginPages)) > 1 ? _react2.default.createElement(
       _semanticUiReact.Menu.Item,
@@ -65,13 +66,13 @@ var buildPagination = exports.buildPagination = function buildPagination(current
       '...'
     ) : null,
     segments.previousPages.map(function (page) {
-      return _react2.default.createElement(_semanticUiReact.Menu.Item, { key: page, name: page, active: false, onClick: handleItemClick });
+      return _react2.default.createElement(_semanticUiReact.Menu.Item, { key: page, page: page, active: false, onClick: handleItemClick });
     }),
     segments.centerPage.map(function (page) {
-      return _react2.default.createElement(_semanticUiReact.Menu.Item, { key: page, name: page, active: true, onClick: handleItemClick });
+      return _react2.default.createElement(_semanticUiReact.Menu.Item, { key: page, page: page, active: true, onClick: handleItemClick });
     }),
     segments.nextPages.map(function (page) {
-      return _react2.default.createElement(_semanticUiReact.Menu.Item, { key: page, name: page, active: false, onClick: handleItemClick });
+      return _react2.default.createElement(_semanticUiReact.Menu.Item, { key: page, page: page, active: false, onClick: handleItemClick });
     }),
     segments.nextPages.length && Math.min.apply(Math, _toConsumableArray(segments.endPages)) - Math.max.apply(Math, _toConsumableArray(segments.nextPages)) > 1 ? _react2.default.createElement(
       _semanticUiReact.Menu.Item,
@@ -79,7 +80,7 @@ var buildPagination = exports.buildPagination = function buildPagination(current
       '...'
     ) : null,
     segments.endPages.map(function (page) {
-      return _react2.default.createElement(_semanticUiReact.Menu.Item, { key: page, name: page, active: false, onClick: handleItemClick });
+      return _react2.default.createElement(_semanticUiReact.Menu.Item, { key: page, page: page, active: false, onClick: handleItemClick });
     })
   );
 };
